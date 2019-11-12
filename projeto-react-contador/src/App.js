@@ -12,7 +12,8 @@ class Contador extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contador: 0
+      contador: 0,
+      visibilidade: false
     }
   }
 
@@ -40,13 +41,26 @@ class Contador extends React.Component {
     })
   }
 
+  alternarVisibilidade = () => {
+    this.setState((prevState) => {
+      return {
+        visibilidade: !prevState.visibilidade
+      }
+    })
+  }
+  
   render() {
     return (
       <div>
         <p className="resultado">{this.state.contador}</p>
-        <button className="botao btnMaisUm" onClick={this.adicionarUm}>+1</button>
-        <button className="botao btnMenosUm" onClick={this.subtrairUm}>-1</button>
-        <button className="botao btnReset" onClick={this.resetarContador}>Resetar</button>
+        <button className="botao" onClick={this.alternarVisibilidade}>{this.state.visibilidade === true ? "Fechar Contador" : "Abrir Contador"}</button>
+        {this.state.visibilidade === true ? (
+          <div>
+            <button className="botao" onClick={this.adicionarUm}>+1</button>
+            <button className="botao" onClick={this.subtrairUm}>-1</button>
+            <button className="botao" onClick={this.resetarContador}>Resetar</button>
+          </div>
+        ) : ""}
       </div>
     )
   }

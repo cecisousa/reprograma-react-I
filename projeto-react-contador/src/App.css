@@ -10,6 +10,8 @@
   border-radius: 10px;
   margin: 8px;
   border: none;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .botao:hover {
