@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const dadosPessoais = {
@@ -9,34 +8,58 @@ const dadosPessoais = {
 
 const saudacao = obj => `Olá, ${obj.nome} ${obj.sobrenome}!`;
 
-const contador = 0;
+class Contador extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contador: 0
+    }
+  }
 
-const retornoDoContador = () => {
-  if (contador === 0) {
-    return "Contador não iniciado"
-  } else {
-    return "Contador iniciado"
+  adicionarUm = () => {
+    this.setState((prevState) => {
+      return {
+        contador: prevState.contador + 1
+      }
+    })
+  }
+
+  subtrairUm = () => {
+    this.setState((prevState) => {
+      return {
+        contador: prevState.contador - 1
+      }
+    })
+  }
+
+  resetarContador = () => {
+    this.setState(() => {
+      return {
+        contador: 0
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <p className="resultado">{this.state.contador}</p>
+        <button className="botao btnMaisUm" onClick={this.adicionarUm}>+1</button>
+        <button className="botao btnMenosUm" onClick={this.subtrairUm}>-1</button>
+        <button className="botao btnReset" onClick={this.resetarContador}>Resetar</button>
+      </div>
+    )
   }
 }
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <h1>{saudacao(dadosPessoais)} Vamos usar essa aplicação?</h1>
       <h2>Contador</h2>
-      <p className="resultado">{contador}</p>
-      <p className="retornoDoContador">{retornoDoContador()}</p>
-      <button className="botao btnMaisUm">+1</button>
-      <button className="botao btnMenosUm">-1</button>
-      <button className="botao btnReset">Resetar</button>
+      <Contador />
     </div>
   );
 }
-
-// document.querySelector(".btnMaisUm").addEventListener("click", function(){
-//   contador += 1
-// });
-
-
 
 export default App;
