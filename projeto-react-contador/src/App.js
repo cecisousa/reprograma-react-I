@@ -49,21 +49,40 @@ class Contador extends React.Component {
     })
   }
   
+  // render() {
+  //   return (
+  //     <div>
+  //       <p className="resultado">{this.state.contador}</p>
+  //       <button className="botao" onClick={this.alternarVisibilidade}>{this.state.visibilidade === true ? "Fechar Contador" : "Abrir Contador"}</button>
+  //       {this.state.visibilidade === true ? (
+  //         <div>
+  //           <button className="botao" onClick={this.adicionarUm}>+1</button>
+  //           <button className="botao" onClick={this.subtrairUm}>-1</button>
+  //           <button className="botao" onClick={this.resetarContador}>Resetar</button>
+  //         </div>
+  //       ) : ""}
+  //     </div>
+  //   )
+  // }
+
+  // Outra forma de renderizar com operadores lógicos:
+
   render() {
     return (
       <div>
         <p className="resultado">{this.state.contador}</p>
         <button className="botao" onClick={this.alternarVisibilidade}>{this.state.visibilidade === true ? "Fechar Contador" : "Abrir Contador"}</button>
-        {this.state.visibilidade === true ? (
+        {this.state.visibilidade && (
           <div>
             <button className="botao" onClick={this.adicionarUm}>+1</button>
             <button className="botao" onClick={this.subtrairUm}>-1</button>
             <button className="botao" onClick={this.resetarContador}>Resetar</button>
           </div>
-        ) : ""}
+        )}
       </div>
     )
   }
+
 }
 
 function App(props) {
