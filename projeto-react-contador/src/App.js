@@ -1,4 +1,5 @@
 import React from 'react';
+import Contador from './componentes/Contador'
 import './App.css';
 
 const dadosPessoais = {
@@ -7,98 +8,6 @@ const dadosPessoais = {
 }
 
 const saudacao = obj => `Olá, ${obj.nome} ${obj.sobrenome}!`;
-
-class Contador extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contador: 0,
-      visibilidade: false,
-      desabilitado: false
-    }
-  }
-
-  adicionarUm = () => {
-    this.setState((prevState) => {
-      return {
-        contador: prevState.contador + 1
-      }
-    })
-  }
-
-  subtrairUm = () => {
-    this.setState((prevState) => {
-      return {
-        contador: prevState.contador - 1
-      }
-    })
-  }
-
-  resetarContador = () => {
-    this.setState(() => {
-      return {
-        contador: 0,
-        desabilitado: false
-      }
-    })
-  }
-
-  alternarVisibilidade = () => {
-    this.setState((prevState) => {
-      return {
-        visibilidade: !prevState.visibilidade
-      }
-    })
-  }
-
-  finalizarContador = () => {
-    this.setState(() => {
-      return {
-        desabilitado: true
-      }
-    })
-  }
-  
-  // render() {
-  //   return (
-  //     <div>
-  //       <p className="resultado">{this.state.contador}</p>
-  //       <button className="botao" onClick={this.alternarVisibilidade}>{this.state.visibilidade === true ? "Fechar Contador" : "Abrir Contador"}</button>
-  //       {this.state.visibilidade === true ? (
-  //         <div>
-  //           <button className="botao" onClick={this.adicionarUm}>+1</button>
-  //           <button className="botao" onClick={this.subtrairUm}>-1</button>
-  //           <button className="botao" onClick={this.resetarContador}>Resetar</button>
-  //         </div>
-  //       ) : ""}
-  //     </div>
-  //   )
-  // }
-
-  // Outra forma de renderizar com operadores lógicos:
-
-  render() {
-    return (
-      <div>
-        <p className="resultado">{this.state.contador}</p>
-        <button className="botao" onClick={this.alternarVisibilidade}>{this.state.visibilidade === true ? "Fechar Contador" : "Abrir Contador"}</button>
-        {this.state.visibilidade && (
-          <div>
-            <button className="botao" disabled={this.state.desabilitado} onClick={this.adicionarUm}>+1</button>
-            <button className="botao" disabled={this.state.desabilitado} onClick={this.subtrairUm}>-1</button>
-            <button className="botao" onClick={this.resetarContador}>Resetar</button>
-            {this.state.contador !== 0 && (
-              <div>
-                <button className="botao" onClick={this.finalizarContador}>Finalizar Contador</button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    )
-  }
-
-}
 
 function App(props) {
   return (
