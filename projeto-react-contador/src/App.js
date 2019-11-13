@@ -37,7 +37,8 @@ class Contador extends React.Component {
   resetarContador = () => {
     this.setState(() => {
       return {
-        contador: 0
+        contador: 0,
+        desabilitado: false
       }
     })
   }
@@ -85,7 +86,7 @@ class Contador extends React.Component {
           <div>
             <button className="botao" disabled={this.state.desabilitado} onClick={this.adicionarUm}>+1</button>
             <button className="botao" disabled={this.state.desabilitado} onClick={this.subtrairUm}>-1</button>
-            <button className="botao" disabled={this.state.desabilitado} onClick={this.resetarContador}>Resetar</button>
+            <button className="botao" onClick={this.resetarContador}>Resetar</button>
             {this.state.contador !== 0 && (
               <div>
                 <button className="botao" onClick={this.finalizarContador}>Finalizar Contador</button>
