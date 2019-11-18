@@ -1,5 +1,5 @@
 import React from 'react';
-import BotaoAbrirFechar from './BotaoAbrirFechar';
+import BotaoAbreFecha from './BotaoAbreFecha';
 import BotoesContador from './BotoesContador';
 import BotaoFinalizar from './BotaoFinalizar';
 
@@ -58,23 +58,24 @@ class Contador extends React.Component {
         return (
             <div>
                 <p className="resultado">{this.state.contador}</p>
-                <BotaoAbrirFechar
-                    onClickMethod={this.alternarVisibilidade}
-                    visibilidade={this.state.visibilidade}
+                <BotaoAbreFecha 
+                    onClickAbreFecha = {this.alternarVisibilidade}
+                    visibilidade = {this.state.visibilidade}
                 />
                 {this.state.visibilidade && (
                     <div>
-                        <BotoesContador
-                            onClickMethod1={this.adicionarUm}
-                            onClickMethod2={this.subtrairUm}
-                            onClickMethod3={this.resetarContador}
-                            onClickMethod4={this.finalizarContador}
-                            desabilitado={this.state.desabilitado}
-                            contador={this.state.contador}
+                        <BotoesContador 
+                            onClickAdicionar = {this.adicionarUm}
+                            onClickSubtrair = {this.subtrairUm}
+                            onClickResetar = {this.resetarContador}
+                            desabilitado = {this.state.desabilitado}
                         />
-                        <BotaoFinalizar />
+                        {this.state.contador !== 0 && (
+                            <BotaoFinalizar 
+                                onClickFinalizar = {this.finalizarContador}
+                            />
                         )}
-                </div>
+                    </div>
                 )}
             </div>
         )
